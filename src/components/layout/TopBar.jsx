@@ -6,7 +6,7 @@ function TopBar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 md:px-10 py-4 sm:py-5">
       <Link to="/" className="flex items-center gap-2">
-        <div className="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-white shadow-md flex items-center justify-center overflow-hidden p-1.5">
+        <div className="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-white shadow-md flex items-center justify-center overflow-hidden p-1.5">
           <img src={logo} alt="Creo Elements" className="h-full w-full object-contain" />
         </div>
       </Link>

@@ -1,10 +1,6 @@
 import { useState } from "react";
 import PageHero from "@/components/layout/PageHero";
-import { FiMail, FiPhone, FiMapPin, FiLinkedin, FiInstagram } from "react-icons/fi";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-
-const fieldClasses =
-  "w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal/50";
 
 function Contact() {
   const [sent, setSent] = useState(false);
@@ -16,68 +12,59 @@ function Contact() {
   };
 
   return (
-    <PageHero eyebrow="Let's talk" title="Contact Us" subtitle="Have a project in mind? We'd love to hear about it.">
-      <section
+    <PageHero eyebrow="Let's talk" title="Contact Us">
+      <form
         ref={revealRef}
-        className="mx-auto max-w-6xl px-5 sm:px-6 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-8 lg:gap-12"
+        onSubmit={handleSubmit}
+        className="mx-auto max-w-4xl px-5 sm:px-6 space-y-8 text-base sm:text-xl leading-relaxed"
       >
-        <div className="space-y-6">
-          <div className="rounded-3xl bg-white p-6 sm:p-8 border border-slate-100 shadow-lg text-ink">
-            <h3 className="text-xl font-black teal-text">Reach out</h3>
-            <ul className="mt-4 space-y-4 text-ink/80 text-sm sm:text-base">
-              <li className="flex items-center gap-3">
-                <span className="h-9 w-9 shrink-0 rounded-full bg-teal/10 grid place-items-center">
-                  <FiMail className="h-4 w-4 text-teal" />
-                </span>
-                <span className="min-w-0 truncate">hello@creo-elements.com</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="h-9 w-9 shrink-0 rounded-full bg-teal/10 grid place-items-center">
-                  <FiPhone className="h-4 w-4 text-teal" />
-                </span>
-                <span>+91 98000 00000</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="h-9 w-9 shrink-0 rounded-full bg-teal/10 grid place-items-center">
-                  <FiMapPin className="h-4 w-4 text-teal" />
-                </span>
-                <span>Mumbai, India</span>
-              </li>
-            </ul>
-            <div className="mt-6 flex gap-3">
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                className="h-10 w-10 rounded-full bg-ink text-white grid place-items-center hover:scale-110 transition"
-              >
-                <FiLinkedin className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="h-10 w-10 rounded-full bg-ink text-white grid place-items-center hover:scale-110 transition"
-              >
-                <FiInstagram className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-        </div>
+        <p>
+          Hello my name is
+          <input required placeholder="Your Name" className="contact-blank" />
+        </p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="rounded-3xl bg-white p-6 sm:p-8 shadow-lg border border-slate-100 space-y-4 text-ink"
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <input required placeholder="Your name" className={fieldClasses} />
-            <input required type="email" placeholder="Email" className={fieldClasses} />
-          </div>
-          <input placeholder="Subject" className={fieldClasses} />
-          <textarea required rows={6} placeholder="Your message…" className={fieldClasses} />
-          <button type="submit" className="teal-btn w-full sm:w-auto">
-            {sent ? "Message sent!" : "Send Message"}
-          </button>
-        </form>
-      </section>
+        <p>
+          I'm looking for help with
+          <input required placeholder="Website, branding, social media" className="contact-blank w-64 sm:w-96" />
+        </p>
+
+        <p>
+          My budget is
+          <input placeholder="Your Budget" className="contact-blank" />
+          and I need it by
+          <input placeholder="next month, 1 week" className="contact-blank" />
+        </p>
+
+        <p>
+          My brand name is
+          <input placeholder="Brand Name" className="contact-blank" />
+          which is into
+          <input placeholder="the industry" className="contact-blank" />
+        </p>
+
+        <p>
+          <select defaultValue="" className="contact-blank">
+            <option value="" disabled hidden>
+              I have a website
+            </option>
+            <option value="have-website">I have a website</option>
+            <option value="no-website">I don't have a website yet</option>
+          </select>
+          It's on
+          <input placeholder="yourwebsite.com" className="contact-blank" />
+        </p>
+
+        <p>
+          Please contact me at
+          <input required type="email" placeholder="Email" className="contact-blank" />
+          and
+          <input type="tel" placeholder="Phone" className="contact-blank" />
+        </p>
+
+        <button type="submit" className="teal-btn-outline mt-4">
+          {sent ? "Message sent!" : "Send Message"}
+        </button>
+      </form>
     </PageHero>
   );
 }
