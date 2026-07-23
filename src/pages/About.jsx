@@ -97,9 +97,12 @@ function About() {
     <PageHero
       eyebrow="About Us"
       title="Marketing that moves the needle"
-      subtitle="Creo Elements is your one-stop shop for all things digital marketing — helping businesses of every size succeed in the ever-evolving online world."
+      subtitle="Creo Elements is your one-stop shop for all things digital marketing. We help businesses of all sizes to achieve success in the ever-evolving online world. Our comprehensive suite of services helps you build a strong brand presence and drive results.
+We offer a wide range of services, including website design & development, social media management, performance marketing, SEO, and branding solutions. We take a collaborative approach, working closely with you to understand your specific needs and develop a strategy that gets noticed.
+Let’s make an impact together.
+With Creo Elements as your partner, you can be confident that your brand is reaching the right audience and achieving tangible results"
     >
-      <Story />
+      {/* <Story /> */}
       <EmpowermentSteps />
       <Team />
     </PageHero>

@@ -1,9 +1,4 @@
-/**
- * The four-layer "gentle wave" effect from the reference screenshot: one
- * wave shape reused four times, each layer given a different fill/opacity
- * and its own drift speed (via the wave1–wave4 classes in styles/index.css)
- * so the layers glide past each other independently.
- */
+
 function Waves() {
   return (
     <div className="waves-container">
