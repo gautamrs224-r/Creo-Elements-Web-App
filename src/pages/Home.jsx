@@ -1,4 +1,5 @@
 import Hero from "@/sections/home/Hero";
+import About from "@/sections/home/About";
 import Expertise from "@/sections/home/Expertise";
 import Testimonials from "@/sections/home/Testimonials";
 import ClientsMarquee from "@/sections/home/ClientsMarquee";
@@ -9,6 +10,7 @@ function Home() {
   return (
     <main className="overflow-x-hidden">
       <Hero />
+      <About />
       <Expertise />
       <Testimonials />
       <ClientsMarquee />

@@ -6,7 +6,7 @@ import { services } from "@/data/services";
 gsap.registerPlugin(ScrollTrigger);
 
 const STACK_DEPTH = 6;
-const VH_PER_CARD = 70;
+const VH_PER_CARD = 38;
 
 function StackedCardChrome() {
   // Decorative "deck" of nested card edges peeking out above the active
@@ -49,7 +49,8 @@ function Expertise() {
       scrub: 0.5,
       anticipatePin: 1,
       onUpdate: (self) => {
-        const next = Math.min(services.length - 1, Math.floor(self.progress * services.length));
+        const raw = Math.floor(self.progress * services.length);
+        const next = Math.max(0, Math.min(services.length - 1, raw));
         setActiveIndex((prev) => (prev === next ? prev : next));
       },
     });
@@ -64,7 +65,7 @@ function Expertise() {
     gsap.fromTo(el, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" });
   }, [activeIndex]);
 
-  const service = services[activeIndex];
+  const service = services[activeIndex] || services[0];
 
   return (
     <section
