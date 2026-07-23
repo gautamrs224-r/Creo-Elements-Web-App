@@ -21,10 +21,14 @@ function Clients() {
         >
           {clients.map((client) => (
             <div
-              key={client}
-              className="h-20 sm:h-24 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-200 border border-slate-200 shadow-sm flex items-center justify-center px-3 text-center"
+              key={client.name}
+              className="h-20 sm:h-24 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-200 border border-slate-200 shadow-sm flex items-center justify-center px-3 text-center overflow-hidden"
             >
-              <span className="text-ink font-bold text-xs sm:text-sm">{client}</span>
+              {client.logo ? (
+                <img src={client.logo} alt={client.name} className="max-h-full max-w-full object-contain" />
+              ) : (
+                <span className="text-ink font-bold text-xs sm:text-sm">{client.name}</span>
+              )}
             </div>
           ))}
         </div>

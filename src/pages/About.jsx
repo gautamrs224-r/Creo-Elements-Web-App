@@ -75,9 +75,11 @@ function Team() {
       <div ref={revealRef} className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12">
         {team.map((member) => (
           <div key={member.name} className="flex gap-5">
-            <div className="h-20 w-20 sm:h-24 sm:w-24 shrink-0 rounded-full bg-teal/20 grid place-items-center text-2xl font-black teal-text">
-              {member.name[0]}
-            </div>
+            <img
+              src={member.photo}
+              alt={member.name}
+              className="h-20 w-20 sm:h-24 sm:w-24 shrink-0 rounded-full object-cover ring-2 ring-teal/30"
+            />
             <div>
               <h3 className="text-lg sm:text-xl font-black teal-text underline decoration-teal/40">
                 {member.name}
