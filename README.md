@@ -1,16 +1,40 @@
-# React + Vite
+## Stack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- **React 18** (Vite) — plain JavaScript, no TypeScript
+- **React Router DOM** — client-side routing
+- **Tailwind CSS** (v3, classic `tailwind.config.js`)
+- **GSAP** (+ ScrollTrigger) — all animations, replacing Framer Motion
+- **React Icons** — replacing `lucide-react`
 
-Currently, two official plugins are available:
+## Getting started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Then open the printed local URL (usually `http://localhost:5173`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+To build for production:
 
-## Expanding the ESLint configuration
+```bash
+npm run build
+npm run preview
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project structure
+
+```
+src/
+  assets/            Images (service icons, hero photo, road background)
+  animations/         GSAP animation factories (e.g. the scroll-driven hero)
+  components/
+    layout/           TopBar, BottomNav, Footer, PageHero, ScrollToTop
+  data/               Plain JS data: services, testimonials, clients, etc.
+  hooks/              useFadeUpOnMount, useScrollReveal (GSAP helpers)
+  pages/              One file per route (Home, About, WhatWeDo, ...)
+  sections/home/      Homepage-only sections (Hero, About, Expertise, ...)
+  styles/index.css    Tailwind entry + the site's custom utility classes
+  App.jsx             Route definitions
+  main.jsx            App entry point
+```
