@@ -1,5 +1,7 @@
 import { useState } from "react";
 import PageHero from "@/components/layout/PageHero";
+import FormField from "@/components/FormField";
+import { FiMail, FiPhone, FiMapPin, FiLinkedin, FiInstagram, FiUser, FiTag, FiCheckCircle } from "react-icons/fi";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 function Contact() {
@@ -12,59 +14,114 @@ function Contact() {
   };
 
   return (
-    <PageHero eyebrow="Let's talk" title="Contact Us">
-      <form
+    <PageHero eyebrow="Let's talk" title="Contact Us" subtitle="Have a project in mind? We'd love to hear about it.">
+      <section
         ref={revealRef}
-        onSubmit={handleSubmit}
-        className="mx-auto max-w-4xl px-5 sm:px-6 space-y-8 text-base sm:text-xl leading-relaxed"
+        className="mx-auto max-w-6xl px-5 sm:px-6 grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-8 lg:gap-12"
       >
-        <p>
-          Hello my name is
-          <input required placeholder="Your Name" className="contact-blank" />
-        </p>
+        {/* Contact details */}
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-ink to-[#0f0f12] p-6 sm:p-8 shadow-xl text-white">
+          <div
+            className="absolute -top-16 -right-16 h-56 w-56 rounded-full opacity-30 blur-3xl"
+            style={{ background: "radial-gradient(circle, #3ecfae, transparent 70%)" }}
+          />
+          <h3 className="relative text-xl font-black teal-text">Reach out</h3>
+          <p className="relative mt-2 text-white/60 text-sm">
+            We usually reply within one business day.
+          </p>
 
-        <p>
-          I'm looking for help with
-          <input required placeholder="Website, branding, social media" className="contact-blank w-64 sm:w-96" />
-        </p>
+          <ul className="relative mt-8 space-y-5 text-sm sm:text-base">
+            <li className="flex items-center gap-4">
+              <span className="h-11 w-11 shrink-0 rounded-full bg-teal/15 grid place-items-center">
+                <FiMail className="h-4 w-4 teal-text" />
+              </span>
+              <span className="min-w-0 truncate text-white/85">dev@creo-elements.com</span>
+            </li>
+            <li className="flex items-center gap-4">
+              <span className="h-11 w-11 shrink-0 rounded-full bg-teal/15 grid place-items-center">
+                <FiPhone className="h-4 w-4 teal-text" />
+              </span>
+              <span className="text-white/85">+91 12346 78901</span>
+            </li>
+            <li className="flex items-start gap-4">
+              <span className="h-11 w-11 shrink-0 rounded-full bg-teal/15 grid place-items-center">
+                <FiMapPin className="h-4 w-4 teal-text" />
+              </span>
+              <span className="text-white/85">Mumbai, India</span>
+            </li>
+          </ul>
 
-        <p>
-          My budget is
-          <input placeholder="Your Budget" className="contact-blank" />
-          and I need it by
-          <input placeholder="next month, 1 week" className="contact-blank" />
-        </p>
+          <div className="relative mt-8 pt-6 border-t border-white/10 flex gap-3">
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              className="h-10 w-10 rounded-full bg-white/10 grid place-items-center hover:bg-teal hover:text-ink transition-colors"
+            >
+              <FiLinkedin className="h-4 w-4" />
+            </a>
+            <a
+              href="#"
+              aria-label="Instagram"
+              className="h-10 w-10 rounded-full bg-white/10 grid place-items-center hover:bg-teal hover:text-ink transition-colors"
+            >
+              <FiInstagram className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
 
-        <p>
-          My brand name is
-          <input placeholder="Brand Name" className="contact-blank" />
-          which is into
-          <input placeholder="the industry" className="contact-blank" />
-        </p>
+        {/* Form */}
+        <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-xl border border-slate-100">
+          {sent ? (
+            <div className="flex flex-col items-center text-center py-14">
+              <FiCheckCircle className="h-14 w-14 text-teal" />
+              <h3 className="mt-5 text-2xl font-black text-ink">Message sent!</h3>
+              <p className="mt-2 text-ink/60 max-w-sm">
+                Thanks for getting in touch — we'll be in your inbox soon.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-5 text-ink">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wide text-ink/45 mb-2">
+                    Your name
+                  </label>
+                  <FormField icon={FiUser} required placeholder="Dev Gautam" />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wide text-ink/45 mb-2">
+                    Email
+                  </label>
+                  <FormField icon={FiMail} required type="email" placeholder="you@email.com" />
+                </div>
+              </div>
 
-        <p>
-          <select defaultValue="" className="contact-blank">
-            <option value="" disabled hidden>
-              I have a website
-            </option>
-            <option value="have-website">I have a website</option>
-            <option value="no-website">I don't have a website yet</option>
-          </select>
-          It's on
-          <input placeholder="yourwebsite.com" className="contact-blank" />
-        </p>
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wide text-ink/45 mb-2">
+                  Subject
+                </label>
+                <FormField icon={FiTag} placeholder="What's this about?" />
+              </div>
 
-        <p>
-          Please contact me at
-          <input required type="email" placeholder="Email" className="contact-blank" />
-          and
-          <input type="tel" placeholder="Phone" className="contact-blank" />
-        </p>
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wide text-ink/45 mb-2">
+                  Message
+                </label>
+                <textarea
+                  required
+                  rows={6}
+                  placeholder="Tell us a little about your project…"
+                  className="w-full rounded-xl border border-slate-200 px-4 py-3.5 outline-none transition-all duration-200 focus:border-teal focus:shadow-[0_0_0_4px_rgba(62,207,174,0.15)]"
+                />
+              </div>
 
-        <button type="submit" className="teal-btn-outline mt-4">
-          {sent ? "Message sent!" : "Send Message"}
-        </button>
-      </form>
+              <button type="submit" className="teal-btn w-full sm:w-auto px-10 py-3.5 text-base">
+                Send Message
+              </button>
+            </form>
+          )}
+        </div>
+      </section>
     </PageHero>
   );
 }
